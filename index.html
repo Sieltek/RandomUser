@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/main.css">
     <title>Random User</title>
 </head>
+
 <body>
-    
+    <div id="todo-list-example">
+        <form v-on:submit.prevent="addNewTodo">
+            <label for="new-todo">Add a person</label>
+            <input v-model="newTodoText" id="new-todo" placeholder="E.g. Xx_D4rK_S4suK3_xX">
+            <button>Add</button>
+        </form>
+        <ul>
+            <li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title"
+                v-on:remove="todos.splice(index, 1)"></li>
+        </ul>
+        <button v-on:click.prevent="random">Random</button>
+        <br>
+        <br>
+        {{rand}}
+    </div>
 </body>
+<script src="src/js/main.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 </html>
